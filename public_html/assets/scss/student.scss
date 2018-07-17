@@ -1,0 +1,78 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 17, 2018, 11:34:46 PM
+    Author     : afrikannerd <https://github.com/afrikannerd>
+*/
+//backgrounds
+$grey:rgb(143,144,134);
+
+
+
+
+body{
+    padding-top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    color: #444;
+}
+
+.student-panel{
+    background: #F7F9FA;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-bottom:0;
+    
+    .h2{
+        margin: 0;
+        padding: 10px;
+        width: 300px;
+    }
+    
+    .logout-banner{
+        text-align: right;
+        right: 10px;
+        width: 200px;
+        float: right;
+        top: -37px;
+        position: relative;
+        
+    }
+}
+
+.container{
+    
+    .list-group{
+        margin-top: 40px;
+        margin-bottom: 10px;
+        .list-group-item{
+            border-radius: 0;
+            border:none;
+            color:#ECF2F6;
+            
+            &:hover{
+                background: #2c3e50;
+            }
+        }
+    }
+}
+
+.student-sidebar{
+    background: #2c3e50;
+    a{
+        background: #2c3e50;
+    }
+}
+.student-body{
+    margin-top: 10px;
+    .panel-heading{
+        padding-top: 0;
+        padding-left: 0;
+        border-bottom: 1px solid rgb(44,62,80);
+    }
+    .panel-body{
+      padding-left: 0;   
+    }
+}

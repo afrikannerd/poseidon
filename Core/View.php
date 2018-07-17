@@ -8,6 +8,7 @@ namespace Core;
  * @author afrikannerd <https://github.com/afrikannerd>
  * @version "0.1"
  */
+use Core\Security\Session;
 class View {
     
     protected $_template = TEMPLATE,$_head,$_body,$_content,$_errors = [],$_title = TITLE;

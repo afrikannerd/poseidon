@@ -29,22 +29,15 @@ class Auth extends Model{
             if($data = $this->_instance->select($this->_table,$columns,$creds))
             {
 
-
-
-
                 if ($data->getRowCount() > 0){
                     $data->results();
                     $this->data = $data->getResult();
 
                     $this->isLoggedIn = true;
                 }
-
-
-
             }else{
                 $this->errors [] = "no users found";
             }
-
 
         }catch (\PDOException $e)
         {

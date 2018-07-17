@@ -1,17 +1,65 @@
 
 <?php  $this->setTitle('Students');?>
 <?php $this->open('head');?>
-    <?php $this->close();?>
+    <link href="/assets/css/student.css" rel="stylesheet" type="text/css"/>
+<?php $this->close();?>
 <?php $this->open('body');?>
-    <img src="/assets/media/calb.jpg" height="200" width="200" />
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+
+<div class="container">
+    <div class="student-panel">
+        <div class="h2">Student Portal</div>
+        <div class="clearfix"></div>
+        <div class=" logout-banner">
+            <?= Core\Security\Session::get('username')?>
+        </div>
     </div>
-    <input type="hidden" value="<?= Core\Security\Security::XSRFTokenGenerator()?>" />
-    <?php $this->close();?>
+    <div class="col col-md-2 list-group student-sidebar">
+        <a href="#" class="list-group-item" >Exam Results</a>
+        <a href="#" class="list-group-item" >Fee History</a>
+    </div>
+    <div class="panel col-md-offset-2 student-body">
+        <div class="panel-heading">Student Details</div>
+        <div class="panel-body">
+            <div class="col-md-6 table-responsive">
+                <table class="table  table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td><?= Core\Security\Session::get('name')?></td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td><?= Core\Security\Session::get('username')?></td>
+                        </tr>
+                        <tr>
+                            <td>Adm No</td>
+                            <td><?= Core\Security\Session::get('user_id')?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6 table-responsive">
+                <table class="table  table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>Term Fee</td>
+                            <td>50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Fee Paid</td>
+                            <td>3,000</td>
+                        </tr>
+                        <tr>
+                            <td>Fee Balance</td>
+                            <td style="color: #e55039;">47,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<?php $this->close();?>

@@ -63,7 +63,7 @@ class AuthController extends Controller implements Authenticatable {
                             break;
                         case "S":
                             Session::set(['user_id'=>$this->_data->id,'student'=>true,'username'=>$this->_data->username,
-                                'level'=>$this->_data->acl]);
+                                'level'=>$this->_data->acl,'name'=> $this->_data->name]);
                             header("location: /student");
                             exit;
                             break;

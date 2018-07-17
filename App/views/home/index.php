@@ -4,7 +4,7 @@
 
 <?php $this->close();?>
 <?php $this->open('body');?>
-<div>
+<div class="container">
 
 </div>
 <?php $this->close();?>

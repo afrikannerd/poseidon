@@ -24,6 +24,6 @@ class StudentController extends Controller
         }
     }
     public function index(){
-        echo 1234;
+        $this->view->render('student/index');
     }
 }
