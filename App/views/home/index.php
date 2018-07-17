@@ -3,10 +3,7 @@
 
 
 <?php $this->close();?>
-<?php $this->open('body');
-
-
-?>
+<?php $this->open('body');?>
 <div>
 
 </div>

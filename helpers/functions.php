@@ -36,11 +36,11 @@ function navigation(){
                 
             </form>
         </div>
-        <div class="username">
+        <div class="username ">
              $name
         </div>
         <div class="right pull-right">
-
+            <span class="glyphicon glyphicon-user" ></span>
         </div>
     </div>
     
@@ -98,3 +98,4 @@ function redirect($path)
 
     };
 }
+

@@ -25,7 +25,7 @@ $this->open('body');
     <div class="form-group">
         <input type="password" name="pass" class="form-control" placeholder="password" />
     </div>
-        <input type="hidden" value="A" name="level">
+
     <div class="form-group">
         <input type="submit" role="button" class="btn btn-md btn-primary" name="login" value="Login" />
     </div>

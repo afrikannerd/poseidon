@@ -80,7 +80,8 @@ final class DB {
             
         } else {
             
-            $this->_error = true;
+            $this->_error = $this->_query->errorInfo();
+
             
         }
          
@@ -285,7 +286,7 @@ final class DB {
      */
     public function findFirst() {
         
-        return $this->_result[0];
+        return isset($this->_result[0]) ? $this->_result[0] : [];
             
         
         

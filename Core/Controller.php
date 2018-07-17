@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Core\Security\Session as Session;
 /**
  * Description of Controller
  *
@@ -16,14 +17,15 @@ abstract class Controller {
     protected $middleware;
 
 
-    public function __construct($model) {
+    public function __construct(Model $model) {
+        Session::init();
 
-        $model = str_replace(CONTROLLER_NAMESPACE, MODEL_NAMESPACE, $model);
-        $model = str_replace("Controller", "" , $model);
         $this->view = new View();
-        $this->model = new $model();
+        $this->model =  $model;
 
     }
+
+
     
 
     

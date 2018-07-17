@@ -121,4 +121,11 @@ div.clearfix {
   width: 400px;
 }
 
-/*# sourceMappingURL=file:///E:/Projects/schoolcms/public/assets/css/app.css.map */
+.username {
+  margin-top: 10px;
+  width: inherit;
+  right: 45px;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=file:///E:/Projects/schoolcms/public_html/assets/css/app.css.map */

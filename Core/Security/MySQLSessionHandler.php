@@ -19,7 +19,7 @@ class MySQLSessionHandler implements \SessionHandlerInterface
     private $_sess_id = "sess_id";
     private $_sess_data = "sess_data";
     private $_col_expiry = "sess_expiry";
-    private $_expiry ;
+    private $_expiry = 0;
     private $_gcStatus = false;
     public function __construct()
     {

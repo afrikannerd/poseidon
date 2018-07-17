@@ -3,21 +3,21 @@
 namespace Core\Security;
 
 /**
- * Description of Cookies
+ * Description of Cookie
  * Created on : Jul 4, 2018, 4:49:06 PM
  * @author afrikannerd <https://github.com/afrikannerd>
  * @version "0.1"
  */
-class Cookies {
-    public static function set($cookie,$value,$expire) {
+class Cookie {
+
+    public static function set($cookie,$value,$expire,$path = '/') {
         
         if (!isset($_COOKIE[$cookie])) {
             
-            setcookie($cookie, $value, $expire);
+            setcookie($cookie, $value, $expire,$path);
             
         }
         
-        return false;
         
     }
     

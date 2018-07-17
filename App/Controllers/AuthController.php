@@ -6,8 +6,8 @@ use Core\{
     Authenticatable,
     Security\Session,
     Security\Security,
+    Security\Cookie
 };
-
 
 /**
  * Description of AuthController
@@ -21,48 +21,70 @@ class AuthController extends Controller implements Authenticatable {
    public function __construct($model)
    {
        parent::__construct($model);
-       Session::init();
-       if(Session::exists('auth'))
-       {
-           header("Location: /dashboard");
-       }
+
+        $this->auth();
+
+
    }
 
     public function login() {
         Security::adminAreaAuth();
-        $this->view->render('dashboard/login');
+
+
 
         if(isset($_POST['login']))
         {
-            $this->_creds['id'] = $_POST['user'];
-            $this->_creds['users_password'] = $_POST['pass'];
-            $this->_creds['users_rank'] = $_POST['level'];
+
+            $this->_creds['username'] = $_POST['user'];
+            $this->_creds['password'] = $_POST['pass'];
+
             $this->_columns = ['*'];
 
-            $obj  =  $this->model->login($this->_columns,$this->_creds);
-            $this->_data = $obj->data;
+            $this->_data  =  $this->model->login($this->_columns,$this->_creds)->data;
 
-            $this->_isLoggedIn = $obj->isLoggedIn();
+                if ($this->_data) {
+
+                    Cookie::set('name', $this->_data->username, (time()+100));
+
+                    switch ($this->_data->acl)
+                    {
+
+                        case "A":
+                            Session::set(['user_id'=>$this->_data->id,'admin'=>true,'username'=>$this->_data->username,
+                                'level'=>$this->_data->acl]);
+                            header("location: /dashboard");
+                            exit;
+                            break;
+                        case "T":
+                            Session::set(['user_id'=>$this->_data->id,'teacher'=>true,'username'=>$this->_data->username,
+                                'level'=>$this->_data->acl]);
+                            header("location: /teacher");
+                            exit;
+                            break;
+                        case "S":
+                            Session::set(['user_id'=>$this->_data->id,'student'=>true,'username'=>$this->_data->username,
+                                'level'=>$this->_data->acl]);
+                            header("location: /student");
+                            exit;
+                            break;
+                        default:
+                            header("location: /404");
+                            exit;
+                            break;
+                    }
 
 
 
-                if ($this->_isLoggedIn) {
-
-
-
-                    Session::set(['user_id'=>$this->_data->id,'auth'=>true,'user_name'=>$this->_data->users_name,
-                        'level'=>$this->_data->users_rank,]);
-
-                    header("location: /dashboard");
 
                 }else{
                      $this->view->render('dashboard/login',['error' => "Wrong Credentials"]);
                 }
+
+
             }
 
+        $this->view->render('dashboard/login');
 
-        #return false;
-        
     }
 
     public function register() {
@@ -81,6 +103,35 @@ class AuthController extends Controller implements Authenticatable {
         
         Sessions::unsetAllSessions();
         
+    }
+
+    protected function auth()
+    {
+        if(Session::exists('level') == true)
+        {
+            $acl = Session::get('level');
+            switch ($acl) {
+                case 'A':
+                    header('location: /dashboard');
+                    exit;
+                    break;
+                case 'T':
+                    header('location: /teacher');
+                    exit;
+                    break;
+                case 'S':
+                    header('location: /student');
+                    exit;
+                    break;
+                default:
+                    header('location: /404');
+                    exit;
+                    break;
+            }
+        }else{
+            $this->login();
+            exit;
+        }
     }
 
 }

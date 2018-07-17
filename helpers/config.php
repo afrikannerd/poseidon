@@ -113,7 +113,7 @@ function root(){
 /*
  * Define allowed paths
  */
-define('ALLOWED_PATHS', ['Home','Dashboard','Auth']);
+define('ALLOWED_PATHS', ['home','dashboard','auth','student']);
 
 
 /*

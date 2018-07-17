@@ -18,11 +18,10 @@ class DashboardController extends Controller{
         
         parent::__construct($model);
 
-        Session::init();
-        #$this->middleware('auth');
-        if(!Session::exists('auth'))
-        {
-            header("Location: /auth/login");
+
+        if(!Session::exists('admin')){
+            header('location: /auth/login');
+            exit;
         }
 
     }

@@ -14,6 +14,10 @@ include_once '../helpers/config.php';
 \Core\Security\Session::set(['token' => \Core\Security\Security::XSRFTokenGenerator()]);
 
 
+
+#\Core\Security\Cookie::set('name', 'Amolo Caleb', (time()+3600*60*60));
+
+
 /*
 $t = Core\DB::instance();
 $k = $t->query('SELECT `*` FROM users WHERE id=:id',['id'=>2]);

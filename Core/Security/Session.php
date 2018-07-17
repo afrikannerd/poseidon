@@ -13,11 +13,18 @@ namespace Core\Security;
 class Session
 {
 
+    /**
+     *
+     */
     public static function init()
     {
 
         new MySQLSessionHandler();
-        session_start();
+        if(session_status() !== PHP_SESSION_ACTIVE)
+        {
+            session_start();
+        }
+
     }
 
     public  static function get($key)

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use \Core\Model;
-use \Core\Security\Session;
+
 /**
  * Description of Auth
  * Created on : Jun 29, 2018, 6:29:22 PM
@@ -35,7 +35,7 @@ class Auth extends Model{
                 if ($data->getRowCount() > 0){
                     $data->results();
                     $this->data = $data->getResult();
-                    #dnd($this->data);
+
                     $this->isLoggedIn = true;
                 }
 

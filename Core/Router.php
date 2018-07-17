@@ -68,11 +68,13 @@ final class Router {
     
     public function dispatch(){
         
-        $model = '';
-        $controller = $model = isset($this->routes['callable']['controller']) ? $this->routes['callable']['controller'] : CONTROLLER;
+
+        $controller = isset($this->routes['callable']['controller']) ? $this->routes['callable']['controller'] : CONTROLLER;
+        $model = $this->getModel();
+
         $action     = $this->routes['callable']['action'];
         $params     = $this->routes['params']??[];
-        #dnd($this->routes);
+
         if(!class_exists($controller)){
             
             return new class(){
@@ -87,10 +89,18 @@ final class Router {
             
         }
         
-        $obj = new $controller($model);
-        //maybe
+        $obj = new $controller(new $model());
+
         call_user_func_array([$obj,$action], $params);
         
+    }
+
+    private function getModel(){
+        $model = isset($this->routes['callable']['controller']) ? $this->routes['callable']['controller'] : CONTROLLER;
+        $model = str_replace(CONTROLLER_NAMESPACE, MODEL_NAMESPACE, $model);
+        $model = str_replace("Controller", "" , $model);
+
+        return $model;
     }
     
     public function __call($name, $arguments) {}
