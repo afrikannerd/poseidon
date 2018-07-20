@@ -24,7 +24,7 @@ function contains($haystack, $needle) {
 }
 
 function navigation(){
-    $name = \Core\Security\Session::get('user_name');
+    
     echo <<<NAV
 <nav class="navbar navbar-default navbar-fixed-top custom-navbar">
     <div class="container-fluid">
@@ -36,11 +36,13 @@ function navigation(){
                 
             </form>
         </div>
-        <div class="username ">
-             $name
-        </div>
-        <div class="right pull-right">
-            <span class="glyphicon glyphicon-user" ></span>
+        
+        <div class=" logout-banner">
+            
+            <form class="logout-form " method="post" action="/auth/logout">
+                <button type="submit" name="logout">Logout</button>
+            </form>
+            
         </div>
     </div>
     
@@ -99,3 +101,63 @@ function redirect($path)
     };
 }
 
+function student_nav()
+{
+    echo <<<NAV
+    <div class="student-panel">
+        <div class="h2">Student Portal</div>
+        
+        <div class=" logout-banner">
+            
+            <form class="logout-form " method="post" action="/auth/logout">
+                <button type="submit" name="logout">Logout</button>
+            </form>
+            
+        </div>
+    </div>
+NAV;
+}
+
+function student_sidebar()
+{
+    echo <<<NAV
+    <div class="col col-md-2 list-group student-sidebar">
+        <a href="/student" class="list-group-item" >Home</a>
+        <a href="/student/results" class="list-group-item" >Exam Results</a>
+        <a href="/student/fees" class="list-group-item" >Fee History</a>
+    </div>
+NAV;
+}
+
+function viewstudents(array $data)
+{
+    $str = "<div class=\"panel-heading\">Fee History</div>
+        <div class=\"panel-body\">
+            <div class=\"table-responsive\">
+                
+                <table class=\"table  table-bordered\">
+                    <thead>
+                    <th>Admission</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    </thead>
+                    <tbody>";
+    while ($row = array_shift($data)) {
+
+            $str .= "<tr>
+                     <td>{$row['username']}</td>
+                     <td>{$row['name']}</td>
+                     <td>{$row['class']}</td>
+                  </tr>";
+
+    }
+                        $str .="
+                </table>
+            </div>
+           
+            
+        </div>
+    </div>";
+
+ print $str;
+}

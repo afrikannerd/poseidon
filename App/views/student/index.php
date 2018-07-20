@@ -1,27 +1,18 @@
 
-<?php  $this->setTitle('Students');?>
+<?php  $this->setTitle('Students - '.Core\Security\Session::get('name'));?>
 <?php $this->open('head');?>
     <link href="/assets/css/student.css" rel="stylesheet" type="text/css"/>
 <?php $this->close();?>
 <?php $this->open('body');?>
 
 <div class="container">
-    <div class="student-panel">
-        <div class="h2">Student Portal</div>
-        <div class="clearfix"></div>
-        <div class=" logout-banner">
-            <?= Core\Security\Session::get('username')?>
-        </div>
-    </div>
-    <div class="col col-md-2 list-group student-sidebar">
-        <a href="#" class="list-group-item" >Exam Results</a>
-        <a href="#" class="list-group-item" >Fee History</a>
-    </div>
+    <?php student_nav();?>
+    <?php student_sidebar();?>
     <div class="panel col-md-offset-2 student-body">
-        <div class="panel-heading">Student Details</div>
+        <div class="panel-heading">Personal Details</div>
         <div class="panel-body">
-            <div class="col-md-6 table-responsive">
-                <table class="table  table-bordered">
+                   <div class="col-md-6 table-responsive">
+        <table class="table  table-bordered">
                     <tbody>
                         <tr>
                             <td>Name</td>
@@ -35,6 +26,14 @@
                             <td>Adm No</td>
                             <td><?= Core\Security\Session::get('user_id')?></td>
                         </tr>
+                        <tr>
+                            <td>Class</td>
+                            <td>3A</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>Male</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -47,11 +46,11 @@
                         </tr>
                         <tr>
                             <td>Fee Paid</td>
-                            <td>3,000</td>
+                            <td>53,000</td>
                         </tr>
                         <tr>
                             <td>Fee Balance</td>
-                            <td style="color: #e55039;">47,000</td>
+                            <td style="color: rgb(35,177,77);">3,000 <small>(Overpayment)</small></td>
                         </tr>
                     </tbody>
                 </table>

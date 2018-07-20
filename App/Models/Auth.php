@@ -31,7 +31,7 @@ class Auth extends Model{
 
                 if ($data->getRowCount() > 0){
                     $data->results();
-                    $this->data = $data->getResult();
+                    $this->data = $data->findFirst();
 
                     $this->isLoggedIn = true;
                 }

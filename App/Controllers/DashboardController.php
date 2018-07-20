@@ -41,7 +41,9 @@ class DashboardController extends Controller{
     }
     public function students(){
         
-        $this->view->render('dashboard/studentpanel');
+        $class = $this->model->select('classes',['name']);
+        
+        $this->view->render('dashboard/studentpanel',$class);
         
     }
     
@@ -50,6 +52,29 @@ class DashboardController extends Controller{
         $this->view->render('dashboard/feepanel');
     }
     
+    public function create()
+    {
+
+        $creds = [];
+        $creds['class'] = $_POST['cls'];
+        $creds['username'] = $creds['password'] = $_POST['adm'];
+        $creds['name'] = $_POST['name'];
+        $data = $this->model->create('users',$creds);
+
+        if(!$data)
+        {
+            print "New record inserted";
+            return;
+        }
+    }
+
+    public function getStudents()
+    {
+        $data = $this->model->select('users',['name','username','class']);
+        viewstudents($data);
+    }
+
+
     public function exams(...$args){
         
         $this->view->render('dashboard/exampanel');

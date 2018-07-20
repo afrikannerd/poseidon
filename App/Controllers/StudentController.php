@@ -26,4 +26,14 @@ class StudentController extends Controller
     public function index(){
         $this->view->render('student/index');
     }
+    
+    public function results()
+    {
+        $this->view->render('student/results');
+    }
+    
+    public function fees()
+    {
+        $this->view->render('student/fees');
+    }
 }

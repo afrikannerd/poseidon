@@ -67,6 +67,7 @@ class Session
         if(isset($_SESSION)){
             unset($_SESSION);
             session_destroy();
+            
         }
     }
 

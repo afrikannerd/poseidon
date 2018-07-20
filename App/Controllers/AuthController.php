@@ -21,17 +21,14 @@ class AuthController extends Controller implements Authenticatable {
    public function __construct($model)
    {
        parent::__construct($model);
-
+       $this->logout();
         $this->auth();
 
 
    }
 
     public function login() {
-        Security::adminAreaAuth();
-
-
-
+        
         if(isset($_POST['login']))
         {
 
@@ -41,7 +38,7 @@ class AuthController extends Controller implements Authenticatable {
             $this->_columns = ['*'];
 
             $this->_data  =  $this->model->login($this->_columns,$this->_creds)->data;
-
+            
                 if ($this->_data) {
 
                     Cookie::set('name', $this->_data->username, (time()+100));
@@ -100,14 +97,20 @@ class AuthController extends Controller implements Authenticatable {
     }
     
     public function logout(){
+        if(isset($_POST['logout']))
+        {
+            Session::killAll();
+            header('location: /auth/login');
+        }
         
-        Sessions::unsetAllSessions();
         
+        
+            
     }
 
     protected function auth()
     {
-        if(Session::exists('level') == true)
+        if(Session::exists('level') === true)
         {
             $acl = Session::get('level');
             switch ($acl) {

@@ -21,9 +21,19 @@ $adminbg2:#1976D2;//blue
 $adminbg3:#2c3e50;//white
 $adminbg4:#F7F9FA;
 $originalnavbg:#ECF2F6;
+html{
+    height: 100%;
+}
 body{
     background: rgba(255, 255, 255, 0.5);
     padding-top: 50px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    .main{
+        flex: 1;
+        margin: 0;
+    }
 }
 
 .custom-navbar{
@@ -49,15 +59,35 @@ body{
         margin-top:13px;
         padding-left:0;
         .custom-search{
-        border: none;
-        padding-bottom: 0;
-        padding-top: 0;
-        height: 23px;
-        border-radius: 15px;
-        border-bottom: 1px solid #e55039;//mandarin red
+            border: none;
+            padding-bottom: 0;
+            padding-top: 0;
+            height: 23px;
+            border-radius: 15px;
+            border-bottom: 1px solid #e55039;//mandarin red
+        }
     }
+    .logout-banner{
+        text-align: right;
+        right: 10px;
+        width: 200px;
+        float: right;
+        top: 14px;
+        position: relative;
+
+        .logout-form{
+            width: 60px;
+            float: right;
+            position: relative;
+
+            button{
+                display: inline-block;
+                border: none;
+                background: #F7F9FA;
+            }
+        }
+
     }
-    
 }
 
 .custom-sidebar{
@@ -74,34 +104,34 @@ body{
     }
 }
 .col-md-2{
-        padding-left: 0;
-        padding-right: 0;
-        
-        .list-group{
-            
-            margin-bottom: 0;
-            border-left: none;
-            border-right: none;
-            .list-group-item{
-                background: $adminbg3;
-                color: #fff;
-                border:none;
-                &:first-child{
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                }
-                &:last-child{
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
-                }
+    padding-left: 0;
+    padding-right: 0;
+
+    .list-group{
+
+        margin-bottom: 0;
+        border-left: none;
+        border-right: none;
+        .list-group-item{
+            background: $adminbg3;
+            color: #fff;
+            border:none;
+            &:first-child{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+            &:last-child{
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
             }
         }
+    }
 }
 div#main{
     margin-left:160px;
     .content{
         border-left: 1px solid #ccc;
-        
+
         .one-half{
             margin: 0 20px;
             padding:10px 5px;
@@ -140,3 +170,20 @@ div.clearfix{
     padding: 5px;
 }
 
+.content{
+    .panel_content{
+        input,select{
+
+            border-radius: 0 !important;
+
+            padding: 5px;
+        }
+    }
+}
+
+.add-student
+{
+    margin-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}

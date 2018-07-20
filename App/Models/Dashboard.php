@@ -27,4 +27,20 @@ class Dashboard extends Model{
         
         return $this->_instance->select('students',['*'])->findAt(3);
     }
+    
+    public function select($table,array $cols,array $conditions = [])
+    {
+        $this->_instance->select($table,$cols,$conditions)->results(\PDO::FETCH_ASSOC);
+        return $this->_instance->getResult();
+    }
+
+    public function create(string $table,array $args)
+    {
+        return $this->_instance->insert($table,$args)->_error;
+    }
+
+    public function getStudents()
+    {
+
+    }
 }

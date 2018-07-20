@@ -13,7 +13,7 @@ final class DB {
 
     private static $_instance = null;
     
-    public $_pdo, $_result = null, $_lastInsertID = 0, $_error = false,$_query,$_count = 0;
+    public $_pdo, $_result = null, $_lastInsertID = 0, $_error = null,$_query,$_count = 0;
 
     /**
      * DB constructor.
@@ -111,7 +111,7 @@ final class DB {
         $placeholders = rtrim($placeholders, ',');
         $sql = "INSERT INTO {$table} ({$fields}) VALUES ({$placeholders})";
 
-        $this->query($sql, $params);
+        return $this->query($sql, $params);
     }
 
     /**
@@ -340,7 +340,7 @@ final class DB {
      */
     public function results(int $mode = PDO::FETCH_OBJ){
         
-        $this->_result = $this->_query->fetch($mode);
+        $this->_result = $this->_query->fetchAll($mode);
 
 
     }

@@ -58,10 +58,10 @@
                 Enrolled Students&nbsp;&nbsp;<span class="badge"><?= \Core\Security\Session::get('username');?></span>
             </div>
             <div class="">
-                New Students&nbsp;&nbsp;<span class="badge"><?= $data->name?></span>
+                New Students&nbsp;&nbsp;<span class="badge">22</span>
             </div>
             <div class="">
-                Students With Outstanding Balances&nbsp;&nbsp;<span class="badge"><?= $data->class_id?></span>
+                Students With Outstanding Balances&nbsp;&nbsp;<span class="badge">344</span>
             </div>
         </div>
     </section>

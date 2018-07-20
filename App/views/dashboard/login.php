@@ -7,7 +7,7 @@
  * @version "0.1"
  */
 
-$this->setTitle("Admin | Login");
+$this->setTitle("Sunshine School | Login");
 $this->open('head');
 ?>
 
@@ -18,12 +18,12 @@ $this->open('body');
 ?>
 <form class="form admin-login col-md-offset-4" method="POST" action="/auth/login">
     <fieldset>
-        <legend>Admin Login</legend>
+        <legend>Login</legend>
     <div class="form-group">
-        <input type="text" name="user" class="form-control" placeholder="Username" />
+        <input type="text" name="user" class="form-control" placeholder="Username" required/>
     </div>
     <div class="form-group">
-        <input type="password" name="pass" class="form-control" placeholder="password" />
+        <input type="password" name="pass" class="form-control" placeholder="password" required/>
     </div>
 
     <div class="form-group">

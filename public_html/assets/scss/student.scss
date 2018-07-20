@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 //backgrounds
 $grey:rgb(143,144,134);
-
+$text_friendly_green:rgb(35,177,77);
 
 
 
@@ -30,7 +30,6 @@ body{
         padding: 10px;
         width: 300px;
     }
-    
     .logout-banner{
         text-align: right;
         right: 10px;
@@ -38,6 +37,18 @@ body{
         float: right;
         top: -37px;
         position: relative;
+        
+        .logout-form{
+            width: 60px;
+            float: right;
+            position: relative;
+            
+            button{
+                display: inline-block;
+                border: none;
+                background: #F7F9FA;
+            }
+        }
         
     }
 }
@@ -51,8 +62,11 @@ body{
             border-radius: 0;
             border:none;
             color:#ECF2F6;
-            
+            background: #2c3e50;
             &:hover{
+                background: #2c3e50;
+            }
+            &:active{
                 background: #2c3e50;
             }
         }
@@ -61,9 +75,7 @@ body{
 
 .student-sidebar{
     background: #2c3e50;
-    a{
-        background: #2c3e50;
-    }
+    
 }
 .student-body{
     margin-top: 10px;
@@ -73,6 +85,19 @@ body{
         border-bottom: 1px solid rgb(44,62,80);
     }
     .panel-body{
-      padding-left: 0;   
+        .form-group{
+            padding-left: 0;
+        }  
     }
+    
+    div{
+        .table{
+            thead{
+                background: #ddd;
+            }
+            th{
+                border-bottom-width: 1px;
+            }
+        }
+    } 
 }
